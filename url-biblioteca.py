@@ -89,7 +89,7 @@ links = load_links()
 # Configurar GUI
 root = tk.Tk()
 root.title("Biblioteca de Enlaces")
-root.geometry("500x400")
+root.geometry("500x600")
 
 frame_top = ttk.Frame(root)
 frame_top.pack(fill="x", padx=10, pady=5)
