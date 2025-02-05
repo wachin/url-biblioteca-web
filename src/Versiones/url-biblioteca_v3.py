@@ -76,42 +76,10 @@ def display_links():
         for link in items:
             tree.insert("", "end", values=(date, link["url"], link["title"]))
 
-# Ventana "Acerca de"
-class AboutWindow(tk.Toplevel):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.title("Acerca de url-biblioteca-web")
-        self.geometry("530x460")
-        self.resizable(False, False)
-
-        text = tk.Text(self, wrap=tk.WORD, padx=10, pady=10, relief=tk.FLAT)
-        text.pack(expand=True, fill=tk.BOTH)
-
-        text.tag_configure("bold", font=("TkDefaultFont", 10, "bold"))
-        text.tag_configure("italic", font=("TkDefaultFont", 10, "italic"))
-
-        text.insert(tk.END, "url-biblioteca-web\n\n", "bold")
-
-        text.insert(tk.END, "url-biblioteca-web es una aplicación en Tkinter.\n\n")
-        text.insert(tk.END, "Copyright 2025 \uE020 Washington Indacochea Delgado.\n")
-        text.insert(tk.END, "wachin.id@gmail.com\n")
-        text.insert(tk.END, "Licencia: GNU GPL3. \n\n")
-        text.insert(tk.END, "Te permite almacenar, organizar y abrir enlaces web.\n")
-        text.insert(tk.END, "Al pegar una URL, se guarda junto con su título,\n")
-        text.insert(tk.END, "ícono y la fecha de adición. Los enlaces se agrupan por días,\n")
-        text.insert(tk.END, "para facilitar la navegación.\n\n")
-        text.insert(tk.END, "Para más información, visite: \n\n", "italic")
-        text.insert(tk.END, "url-biblioteca-web\n")
-        text.insert(tk.END, "https://github.com/wachin/url-biblioteca-web\n\n")
-
-        text.config(state=tk.DISABLED)
-        close_button = ttk.Button(self, text="Cerrar", command=self.destroy)
-        close_button.pack(pady=10)
-
 # Configuración de la GUI
 root = tk.Tk()
 root.title("Biblioteca de Enlaces")
-root.geometry("750x500")
+root.geometry("700x600")
 
 frame = ttk.Frame(root)
 frame.pack(pady=10, padx=10, fill="x")
@@ -124,9 +92,6 @@ btn_add.pack(side="left", padx=5)
 
 btn_delete = ttk.Button(frame, text="Eliminar", command=delete_selected)
 btn_delete.pack(side="left", padx=5)
-
-btn_about = ttk.Button(frame, text="Acerca de", command=lambda: AboutWindow(root))
-btn_about.pack(side="left", padx=5)
 
 columns = ("Fecha", "URL", "Título")
 tree = ttk.Treeview(root, columns=columns, show="headings")
